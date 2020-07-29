@@ -34,7 +34,7 @@ namespace IndiaStateCensusAnalyser
         {
             if (correctFilePath != filePath)
             {
-                throw new IndianStateAnalyserException("this is wrong file path", IndianStateAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM_EXCEPTION);
+                new CSVFactory('C').CheckForException();
             }
         }
 
@@ -42,7 +42,7 @@ namespace IndiaStateCensusAnalyser
         {
             if (correctFilePath != filePath)
             {
-                throw new IndianStateAnalyserException("this is a wrong file type", IndianStateAnalyserException.ExceptionType.NOT_CSV_FILE_EXCEPTION);
+                new CSVFactory('N').CheckForException();
             }
         }
 
@@ -53,7 +53,7 @@ namespace IndiaStateCensusAnalyser
             {
                 if (elements.Split() != elements.Split(','))
                 {
-                    throw new IndianStateAnalyserException("this is a wrong file type", IndianStateAnalyserException.ExceptionType.WRONG_CSV_DELIMITER_EXCEPTION);
+                    new CSVFactory('W').CheckForException();
                 }
             }
         }
@@ -67,7 +67,7 @@ namespace IndiaStateCensusAnalyser
             {
                 if (numOfRecords[0] != numOfRecordsIncorrectFile[0])
                 {
-                    throw new IndianStateAnalyserException("this is a wrong header", IndianStateAnalyserException.ExceptionType.HEADER_NOT_MATCHED_EXCEPTION); 
+                    new CSVFactory('H').CheckForException();
                 }
             }
         }
