@@ -18,5 +18,6 @@ namespace IndiaStateCensusAnalyser
             }
             return count - 1;
         }
+
     }
 }
