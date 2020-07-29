@@ -44,5 +44,12 @@ namespace IndianStateCensusAnalyserTest
             IndianStateAnalyserException e = Assert.Throws<IndianStateAnalyserException>(() => IndiaStateCensusAnalyser.StateCensusAnalyser.CheckForWrongFileType(CSV_FILE_PATH, NOT_CSV_FILE_PATH));
             Assert.AreEqual(IndianStateAnalyserException.ExceptionType.NOT_CSV_FILE_EXCEPTION, e.type);
         }
+
+        [Test]
+        public void GivenWrongFileType_WhenAnalyseForStateCensus_ThenShouldThrowHeadearNotMathedException()
+        {
+            IndianStateAnalyserException e = Assert.Throws<IndianStateAnalyserException>(() => IndiaStateCensusAnalyser.StateCensusAnalyser.CheckForHeader(CSV_FILE_PATH, WRONG_DELIMITER_CSV_FILE_PATH));
+            Assert.AreEqual(IndianStateAnalyserException.ExceptionType.HEADER_NOT_MATCHED_EXCEPTION, e.type);
+        }
     }
 }

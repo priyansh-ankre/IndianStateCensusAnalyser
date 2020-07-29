@@ -57,5 +57,19 @@ namespace IndiaStateCensusAnalyser
                 }
             }
         }
+
+        public static void CheckForHeader(string correctFilePath,string wrongFilePath)
+        {
+            string[] numOfRecords = File.ReadAllLines(correctFilePath);
+            string[] numOfRecordsIncorrectFile = File.ReadAllLines(wrongFilePath);
+
+            for (int rows = 0; rows < numOfRecords.Length; rows++)
+            {
+                if (numOfRecords[0] != numOfRecordsIncorrectFile[0])
+                {
+                    throw new IndianStateAnalyserException("this is a wrong header", IndianStateAnalyserException.ExceptionType.HEADER_NOT_MATCHED_EXCEPTION); 
+                }
+            }
+        }
     }
 }
