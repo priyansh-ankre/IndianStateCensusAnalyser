@@ -6,6 +6,7 @@ namespace IndiaStateCensusAnalyser
     {
         public static void Main(string[] args)
         {
+
             string STATE_CENSUS_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\CSVfiles\IndiaStateCensusData.csv";
             string STATE_CODE_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\CSVfiles\IndiaStateCode.csv";
             int csvStateCensusRecords = CSVStateCensus.GetRecords(STATE_CENSUS_FILE_PATH);
