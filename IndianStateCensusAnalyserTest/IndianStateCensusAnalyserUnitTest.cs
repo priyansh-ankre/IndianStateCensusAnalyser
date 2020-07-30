@@ -6,13 +6,13 @@ namespace IndianStateCensusAnalyserTest
     public class IndianStateCensusAnalyserUnitTest
     {
 
-        public string CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\IndiaStateCensusData.csv";
-        public string WRONG_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusData.csv";
-        public string NOT_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\IndiaStateCensusData.txt";
-        public string WRONG_DELIMITER_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\IndiaStateCensusDataIncorrect.csv";
-        public string STATE_CODE_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\IndiaStateCode.csv";
-        public string WRONG_STATE_CODE_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyser\IndiaStateCode.csv";
-        public string STATE_CODE_NOT_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\IndiaStateCode.txt";
+        public string CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\CSVfiles\IndiaStateCensusData.csv";
+        public string WRONG_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\CSVfiles\IndiaStateCensusData.csv";
+        public string NOT_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\CSVfiles\IndiaStateCensusData.txt";
+        public string WRONG_DELIMITER_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\CSVfiles\IndiaStateCensusDataIncorrect.csv";
+        public string STATE_CODE_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\CSVfiles\IndiaStateCode.csv";
+        public string WRONG_STATE_CODE_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\CSVfiles\IndiaStateCode.csv";
+        public string STATE_CODE_NOT_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\CSVfiles\IndiaStateCode.txt";
 
         [Test]
         public void GivenCSVFile_WhenAnalyseForRecord_ThenShouldReturnCorrectRecord()

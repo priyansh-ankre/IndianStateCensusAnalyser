@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace IndiaStateCensusAnalyser
 {
@@ -9,16 +7,13 @@ namespace IndiaStateCensusAnalyser
     {
         public static int GetRecords(string path)
         {
-            int count = 0;
-            string[] data = File.ReadAllLines(path);
-            IEnumerable<string> records = data;
-            List<string> recordsList = new List<string>();
-            foreach (var elements in records)
+            var csv = new List<string>();
+            var records = File.ReadAllLines(path);
+            foreach(var elements in records)
             {
-                count++;
-                recordsList.Add(elements);
+                csv.Add(elements);
             }
-            return recordsList.Count - 1;
+            return csv.Count - 1;
         }
 
     }
