@@ -74,5 +74,11 @@ namespace IndianStateCensusAnalyserTest
             IndianStateAnalyserException e = Assert.Throws<IndianStateAnalyserException>(() => IndiaStateCensusAnalyser.StateCensusAnalyser.CheckForHeader(STATE_CODE_CSV_FILE_PATH, CSV_FILE_PATH));
             Assert.AreEqual(IndianStateAnalyserException.ExceptionType.HEADER_NOT_MATCHED_EXCEPTION, e.type);
         }
+
+        [Test]
+        public void GivenIndianStateCensusData_WhenSortedOnState_ThenShouldReturnSortedResult()
+        {
+            
+        }
     }
 }

@@ -2,13 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
+using System.Linq;
+using System.Reflection;
 
 namespace IndiaStateCensusAnalyser
 {
     public class JSONStateCensus
     {
-        public static void CsvToJSON(string path)
+        string path;
+        public JSONStateCensus(string path)
+        {
+            this.path = path;
+        }
+        public string CsvToJSON()
         {
             var csv = new List<string[]>();
             var lines = File.ReadAllLines(path);
@@ -28,8 +34,17 @@ namespace IndiaStateCensusAnalyser
 
                 listObjResult.Add(objResult);
             }
+            return JsonConvert.SerializeObject(listObjResult);
+            /*Console.WriteLine(json);
+            string serializedAsString = JsonConvert.SerializeObject(json, Formatting.Indented);*/
+        }
 
-            Console.WriteLine(JsonConvert.SerializeObject(listObjResult));
+        
+        public void SortByState()
+        {
+            var listOb = JsonConvert.DeserializeObject<List<JSONObject>>(CsvToJSON());
+            var descListOb = listOb.OrderBy(x => x.State);
+            Console.WriteLine(JsonConvert.SerializeObject(descListOb));
         }
     }
 }

@@ -14,7 +14,7 @@ namespace IndiaStateCensusAnalyser
             Console.WriteLine("state census recors: " + stateCensusRecords);
             StateCensusAnalyser.GetData(FILE_PATH);
             Console.WriteLine();
-            JSONStateCensus.CsvToJSON(FILE_PATH);
+            new JSONStateCensus(FILE_PATH).SortByState();
             
         }
     }
