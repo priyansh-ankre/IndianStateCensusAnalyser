@@ -4,11 +4,9 @@ namespace IndiaStateCensusAnalyser
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             string FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\IndiaStateCensusData.csv";
-            
-            
 
             int csvStateCensusRecords = CSVStateCensus.GetRecords(FILE_PATH);
             int stateCensusRecords = StateCensusAnalyser.GetStateCensusRecords(FILE_PATH);

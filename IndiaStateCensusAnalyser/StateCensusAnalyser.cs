@@ -65,35 +65,6 @@ namespace IndiaStateCensusAnalyser
             }
         }
 
-       /* public static void CheckForWrongFilePath(string correctFilePath, string filePath)
-        {
-            if (correctFilePath != filePath)
-            {
-                new CSVFactory('C').CheckForException();
-            }
-        }
-
-
-        public static void CheckForWrongFileType(string correctFilePath, string filePath)
-        {
-            if (correctFilePath != filePath)
-            {
-                new CSVFactory('N').CheckForException();
-            }
-        }
-
-        public static void CheckForDelimiter(string filePath)
-        {
-            string[] numOfRecords = File.ReadAllLines(filePath);
-            foreach (var elements in numOfRecords)
-            {
-                if (elements.Split() != elements.Split(','))
-                {
-                    new CSVFactory('W').CheckForException();
-                }
-            }
-        }*/
-
         public static void CheckForHeader(string correctFilePath,string wrongFilePath)
         {
             string[] numOfRecords = File.ReadAllLines(correctFilePath);
