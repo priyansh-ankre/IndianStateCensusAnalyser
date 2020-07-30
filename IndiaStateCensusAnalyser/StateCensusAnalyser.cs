@@ -8,10 +8,45 @@ namespace IndiaStateCensusAnalyser
     public class StateCensusAnalyser
     {
         private readonly string filePath;
+        private readonly string wrongFilePath;
+        private readonly char delimiter = ',';
+
 
         public StateCensusAnalyser(string filePath)
         {
             this.filePath = filePath;
+        }
+
+        public StateCensusAnalyser(string filePath, string wrongFilePath)
+        {
+            this.filePath = filePath;
+            this.wrongFilePath = wrongFilePath;
+        }
+
+        public void CheckForException()
+        {
+            if (wrongFilePath != null)
+            {
+                if (filePath != wrongFilePath)
+                {
+                    throw new IndianStateAnalyserException("this is wrong file path", IndianStateAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM_EXCEPTION);
+                }
+            }
+
+            if (!filePath.EndsWith(".csv"))
+            {
+                throw new IndianStateAnalyserException("this is a wrong file type", IndianStateAnalyserException.ExceptionType.NOT_CSV_FILE_EXCEPTION);
+            }
+
+            string[] numOfRecords = File.ReadAllLines(filePath);
+
+            foreach (var elements in numOfRecords)
+            {
+                if (elements.Split()!=elements.Split(delimiter))
+                {
+                    throw new IndianStateAnalyserException("this is a wrong file type", IndianStateAnalyserException.ExceptionType.WRONG_CSV_DELIMITER_EXCEPTION);
+                }
+            }
         }
 
         public static int GetStateCensusRecords(string filepath)
@@ -30,13 +65,14 @@ namespace IndiaStateCensusAnalyser
             }
         }
 
-        public static void CheckForWrongFilePath(string correctFilePath, string filePath)
+       /* public static void CheckForWrongFilePath(string correctFilePath, string filePath)
         {
             if (correctFilePath != filePath)
             {
                 new CSVFactory('C').CheckForException();
             }
         }
+
 
         public static void CheckForWrongFileType(string correctFilePath, string filePath)
         {
@@ -56,7 +92,7 @@ namespace IndiaStateCensusAnalyser
                     new CSVFactory('W').CheckForException();
                 }
             }
-        }
+        }*/
 
         public static void CheckForHeader(string correctFilePath,string wrongFilePath)
         {
@@ -67,7 +103,7 @@ namespace IndiaStateCensusAnalyser
             {
                 if (numOfRecords[0] != numOfRecordsIncorrectFile[0])
                 {
-                    new CSVFactory('H').CheckForException();
+                    throw new IndianStateAnalyserException("this is a wrong header", IndianStateAnalyserException.ExceptionType.HEADER_NOT_MATCHED_EXCEPTION);
                 }
             }
         }

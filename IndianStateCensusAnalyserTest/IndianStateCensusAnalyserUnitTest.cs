@@ -23,21 +23,21 @@ namespace IndianStateCensusAnalyserTest
         [Test]
         public void GivenWrongCSVFile_WhenAnalyseForStateCensus_ThenShouldThrowException()
         {
-            IndianStateAnalyserException e = Assert.Throws<IndianStateAnalyserException>(() => IndiaStateCensusAnalyser.StateCensusAnalyser.CheckForWrongFilePath(CSV_FILE_PATH, WRONG_CSV_FILE_PATH));
+            IndianStateAnalyserException e = Assert.Throws<IndianStateAnalyserException>(() =>new IndiaStateCensusAnalyser.StateCensusAnalyser(CSV_FILE_PATH, WRONG_CSV_FILE_PATH).CheckForException());
             Assert.AreEqual(IndianStateAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM_EXCEPTION, e.type);
         }
 
         [Test]
         public void GivenWrongFileType_WhenAnalyseForStateCensus_ThenShouldThrowException()
         {
-            IndianStateAnalyserException e = Assert.Throws<IndianStateAnalyserException>(() => IndiaStateCensusAnalyser.StateCensusAnalyser.CheckForWrongFileType(CSV_FILE_PATH, NOT_CSV_FILE_PATH));
+            IndianStateAnalyserException e = Assert.Throws<IndianStateAnalyserException>(() =>new IndiaStateCensusAnalyser.StateCensusAnalyser(NOT_CSV_FILE_PATH).CheckForException());
             Assert.AreEqual(IndianStateAnalyserException.ExceptionType.NOT_CSV_FILE_EXCEPTION, e.type);
         }
 
         [Test]
         public void GivenWrongFileDelimiter_WhenAnalyseForStateCensus_ThenShouldThrowException()
         {
-            IndianStateAnalyserException e = Assert.Throws<IndianStateAnalyserException>(() => IndiaStateCensusAnalyser.StateCensusAnalyser.CheckForDelimiter(WRONG_DELIMITER_CSV_FILE_PATH));
+            IndianStateAnalyserException e = Assert.Throws<IndianStateAnalyserException>(() =>new IndiaStateCensusAnalyser.StateCensusAnalyser(WRONG_DELIMITER_CSV_FILE_PATH).CheckForException());
             Assert.AreEqual(IndianStateAnalyserException.ExceptionType.WRONG_CSV_DELIMITER_EXCEPTION, e.type);
         }
 
@@ -57,14 +57,14 @@ namespace IndianStateCensusAnalyserTest
         [Test]
         public void GivenWrongStateCodeCSVFile_WhenAnalyseForStateCensus_ThenShouldThrowException()
         {
-            IndianStateAnalyserException e = Assert.Throws<IndianStateAnalyserException>(() => IndiaStateCensusAnalyser.StateCensusAnalyser.CheckForWrongFilePath(STATE_CODE_CSV_FILE_PATH, WRONG_STATE_CODE_CSV_FILE_PATH));
+            IndianStateAnalyserException e = Assert.Throws<IndianStateAnalyserException>(() =>new IndiaStateCensusAnalyser.StateCensusAnalyser(STATE_CODE_CSV_FILE_PATH, WRONG_STATE_CODE_CSV_FILE_PATH).CheckForException());
             Assert.AreEqual(IndianStateAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM_EXCEPTION, e.type);
         }
 
         [Test]
         public void GivenWrongStateCodeFileType_WhenAnalyseForStateCensus_ThenShouldThrowException()
         {
-            IndianStateAnalyserException e = Assert.Throws<IndianStateAnalyserException>(() => IndiaStateCensusAnalyser.StateCensusAnalyser.CheckForWrongFileType(STATE_CODE_CSV_FILE_PATH, STATE_CODE_NOT_CSV_FILE_PATH));
+            IndianStateAnalyserException e = Assert.Throws<IndianStateAnalyserException>(() =>new IndiaStateCensusAnalyser.StateCensusAnalyser(STATE_CODE_NOT_CSV_FILE_PATH).CheckForException());
             Assert.AreEqual(IndianStateAnalyserException.ExceptionType.NOT_CSV_FILE_EXCEPTION, e.type);
         }
 
