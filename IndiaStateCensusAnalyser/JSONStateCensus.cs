@@ -59,5 +59,12 @@ namespace IndiaStateCensusAnalyser
             var descListOb = listOb.OrderBy(x => x.DensityPerSqKm);
             Console.WriteLine(JsonConvert.SerializeObject(descListOb));
         }
+
+        public void SortIndiaSateCensusByAreaInSqKm()
+        {
+            var listOb = JsonConvert.DeserializeObject<List<JSONCensus>>(CsvToJSON());
+            var descListOb = listOb.OrderBy(x => x.AreaInSqKm);
+            Console.WriteLine(JsonConvert.SerializeObject(descListOb));
+        }
     }
 }
