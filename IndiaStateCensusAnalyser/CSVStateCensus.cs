@@ -12,11 +12,13 @@ namespace IndiaStateCensusAnalyser
             int count = 0;
             string[] data = File.ReadAllLines(path);
             IEnumerable<string> records = data;
+            List<string> recordsList = new List<string>();
             foreach (var elements in records)
             {
                 count++;
+                recordsList.Add(elements);
             }
-            return count - 1;
+            return recordsList.Count - 1;
         }
 
     }
