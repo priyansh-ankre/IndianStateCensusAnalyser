@@ -38,12 +38,25 @@ namespace IndiaStateCensusAnalyser
             /*Console.WriteLine(json);
             string serializedAsString = JsonConvert.SerializeObject(json, Formatting.Indented);*/
         }
-
         
-        public void SortByState()
+        public void SortIndiaSateCensusByState()
         {
-            var listOb = JsonConvert.DeserializeObject<List<JSONObject>>(CsvToJSON());
+            var listOb = JsonConvert.DeserializeObject<List<JSONCensus>>(CsvToJSON());
             var descListOb = listOb.OrderBy(x => x.State);
+            Console.WriteLine(JsonConvert.SerializeObject(descListOb));
+        }
+
+        public void SortIndiaSateCodeByState()
+        {
+            var listOb = JsonConvert.DeserializeObject<List<JSONCode>>(CsvToJSON());
+            var descListOb = listOb.OrderBy(x => x.StateName);
+            Console.WriteLine(JsonConvert.SerializeObject(descListOb));
+        }
+
+        public void SortIndiaSateCensusByDensityPerSqKm()
+        {
+            var listOb = JsonConvert.DeserializeObject<List<JSONCensus>>(CsvToJSON());
+            var descListOb = listOb.OrderBy(x => x.DensityPerSqKm);
             Console.WriteLine(JsonConvert.SerializeObject(descListOb));
         }
     }

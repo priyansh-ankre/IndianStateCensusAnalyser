@@ -1,6 +1,6 @@
 ﻿namespace IndiaStateCensusAnalyser
 {
-    public class JSONObject
+    public class JSONCensus
     {
         public string State { get; set; }
         public string Population { get; set; }
