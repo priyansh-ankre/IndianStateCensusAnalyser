@@ -42,29 +42,29 @@ namespace IndiaStateCensusAnalyser
         public string SortIndiaStateCensusByState()
         {
             var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
-            var descListOb = listOb.OrderBy(x => x.State);
-            return JsonConvert.SerializeObject(descListOb);
+            var ascListOb = listOb.OrderBy(x => x.State);
+            return JsonConvert.SerializeObject(ascListOb);
         }
 
         public string SortIndiaStateCodeByState()
         {
             var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
-            var descListOb = listOb.OrderBy(x => x.StateName);
-            return JsonConvert.SerializeObject(descListOb);
+            var ascListOb = listOb.OrderBy(x => x.StateName);
+            return JsonConvert.SerializeObject(ascListOb);
         }
 
         public string SortIndiaStateCensusByDensityPerSqKm()
         {
             var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
-            var descListOb = listOb.OrderBy(x => x.DensityPerSqKm);
-            return JsonConvert.SerializeObject(descListOb);
+            var ascListOb = listOb.OrderBy(x => x.DensityPerSqKm);
+            return JsonConvert.SerializeObject(ascListOb);
         }
 
         public string SortIndiaStateCensusByAreaInSqKm()
         {
             var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
-            var descListOb = listOb.OrderBy(x => x.AreaInSqKm);
-            return JsonConvert.SerializeObject(descListOb);
+            var ascListOb = listOb.OrderBy(x => x.AreaInSqKm);
+            return JsonConvert.SerializeObject(ascListOb);
         }
     }
 }

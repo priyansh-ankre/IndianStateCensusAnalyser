@@ -8,6 +8,7 @@ namespace IndiaStateCensusAnalyser
         {
 
             string STATE_CENSUS_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\CSVfiles\IndiaStateCensusData.csv";
+            string US_CENSUS_DATA_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\CSVfiles\USCensusData.csv";
 
             ICSVHelper cSVHelper = new JSONStateCensus(STATE_CENSUS_FILE_PATH);
 
@@ -27,6 +28,8 @@ namespace IndiaStateCensusAnalyser
             Console.WriteLine();
 
             Console.WriteLine("State in ascending order :" + cSVHelper.SortIndiaStateCensusByState());
+
+            StateCensusAnalyser.GetData(US_CENSUS_DATA_FILE_PATH);
         }
     }
 }
