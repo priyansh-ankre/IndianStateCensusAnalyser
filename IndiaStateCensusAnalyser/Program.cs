@@ -30,6 +30,10 @@ namespace IndiaStateCensusAnalyser
             Console.WriteLine("State in ascending order :" + cSVHelper.SortIndiaStateCensusByState());
 
             StateCensusAnalyser.GetData(US_CENSUS_DATA_FILE_PATH);
+            Console.WriteLine();
+
+            Console.WriteLine("State census data from most population density state to least one :" + new JSONStateCensus(US_CENSUS_DATA_FILE_PATH).SortUSCensusDataByPopulousState());
+            Console.WriteLine();
         }
     }
 }

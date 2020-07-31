@@ -14,6 +14,7 @@ namespace IndianStateCensusAnalyserTest
         public string STATE_CODE_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\CSVfiles\IndiaStateCode.csv";
         public string WRONG_STATE_CODE_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\CSVfiles\IndiaStateCode.csv";
         public string STATE_CODE_NOT_CSV_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\CSVfiles\IndiaStateCode.txt";
+        string US_CENSUS_DATA_FILE_PATH = @"C:\Users\hp\source\repos\IndiaStateCensusAnalyserApplication\IndiaStateCensusAnalyser\CSVfiles\USCensusData.csv";
 
         [Test]
         public void GivenCSVFile_WhenAnalyseForRecord_ThenShouldReturnCorrectRecord()
@@ -104,6 +105,16 @@ namespace IndianStateCensusAnalyserTest
             JArray jArray = JArray.Parse(jsonData);
             string firstValue = jArray[0]["DensityPerSqKm"].ToString();
             Assert.AreEqual("1029", firstValue);
+        }
+
+        [Test]
+        public void GivenUSCensusData_WhenAnalysed_ThenShouldReturnPopulousStateSortedResult()
+        {
+            IndiaStateCensusAnalyser.JSONStateCensus jSONState = new IndiaStateCensusAnalyser.JSONStateCensus(US_CENSUS_DATA_FILE_PATH);
+            string jsonData = jSONState.SortUSCensusDataByPopulousState();
+            JArray jArray = JArray.Parse(jsonData);
+            string firstValue = jArray[0]["Population"].ToString();
+            Assert.AreEqual("1052567", firstValue);
         }
     }
 }

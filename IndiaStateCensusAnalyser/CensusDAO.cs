@@ -17,6 +17,6 @@ namespace IndiaStateCensusAnalyser
         public string WaterArea { get; set; }
         public string LandArea { get; set; }
         public string PopulationDensity { get; set; }
-        public string HousingDensity { get; set; }
+        public string HousingDensity { get;set; }
     }
 }
