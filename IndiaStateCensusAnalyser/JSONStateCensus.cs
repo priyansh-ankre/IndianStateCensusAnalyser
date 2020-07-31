@@ -66,5 +66,12 @@ namespace IndiaStateCensusAnalyser
             var ascListOb = listOb.OrderBy(x => x.AreaInSqKm);
             return JsonConvert.SerializeObject(ascListOb);
         }
+
+        public string SortUSCensusDataByPopulousState()
+        {
+            var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
+            var ascListOb = listOb.OrderBy(x => x.Population);
+            return JsonConvert.SerializeObject(ascListOb);
+        }
     }
 }
