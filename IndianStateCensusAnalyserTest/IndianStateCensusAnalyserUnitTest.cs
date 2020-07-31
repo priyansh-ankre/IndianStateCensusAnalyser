@@ -1,4 +1,5 @@
 using IndiaStateCensusAnalyser;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 
 namespace IndianStateCensusAnalyserTest
@@ -76,9 +77,33 @@ namespace IndianStateCensusAnalyserTest
         }
 
         [Test]
-        public void GivenIndianStateCensusData_WhenSortedOnState_ThenShouldReturnSortedResult()
+        public void GivenIndianStateCensusData_WhenAnalysed_ThenShouldReturnStateSortedResult()
         {
-            
+            IndiaStateCensusAnalyser.JSONStateCensus jSONState = new IndiaStateCensusAnalyser.JSONStateCensus(CSV_FILE_PATH);
+            string jsonData = jSONState.SortIndiaStateCensusByState();
+            JArray jArray = JArray.Parse(jsonData);
+            string firstValue = jArray[0]["State"].ToString();
+            Assert.AreEqual("Andhra Pradesh",firstValue);
+        }
+
+        [Test]
+        public void GivenIndianStateCodeData_WhenAnalysed_ThenShouldReturnStateSortedResult()
+        {
+            IndiaStateCensusAnalyser.JSONStateCensus jSONState = new IndiaStateCensusAnalyser.JSONStateCensus(STATE_CODE_CSV_FILE_PATH);
+            string jsonData = jSONState.SortIndiaStateCodeByState();
+            JArray jArray = JArray.Parse(jsonData);
+            string firstValue = jArray[0]["StateName"].ToString();
+            Assert.AreEqual("Andaman and Nicobar Islands", firstValue);
+        }
+
+        [Test]
+        public void GivenIndianStateCensusData_WhenAnalysed_ThenShouldReturnPopulousStateSortedResult()
+        {
+            IndiaStateCensusAnalyser.JSONStateCensus jSONState = new IndiaStateCensusAnalyser.JSONStateCensus(CSV_FILE_PATH);
+            string jsonData = jSONState.SortIndiaStateCensusByDensityPerSqKm();
+            JArray jArray = JArray.Parse(jsonData);
+            string firstValue = jArray[0]["DensityPerSqKm"].ToString();
+            Assert.AreEqual("1029", firstValue);
         }
     }
 }
