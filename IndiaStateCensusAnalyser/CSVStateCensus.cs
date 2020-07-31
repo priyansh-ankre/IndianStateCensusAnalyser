@@ -7,11 +7,11 @@ namespace IndiaStateCensusAnalyser
     {
         public static int GetRecords(string path)
         {
-            var csv = new List<string>();
+            var csv = new Dictionary<int,string[]>();
             var records = File.ReadAllLines(path);
-            foreach(var elements in records)
+            for(int rows = 0; rows < records.Length; rows++)
             {
-                csv.Add(elements);
+                csv.Add(rows, records);
             }
             return csv.Count - 1;
         }
