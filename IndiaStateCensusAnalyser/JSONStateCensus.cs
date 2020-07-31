@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace IndiaStateCensusAnalyser
 {
-    public class JSONStateCensus
+    public class JSONStateCensus : ICSVHelper
     {
         string path;
         public JSONStateCensus(string path)
@@ -41,28 +41,28 @@ namespace IndiaStateCensusAnalyser
         
         public string SortIndiaStateCensusByState()
         {
-            var listOb = JsonConvert.DeserializeObject<List<JSONCensus>>(CsvToJSON());
+            var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
             var descListOb = listOb.OrderBy(x => x.State);
             return JsonConvert.SerializeObject(descListOb);
         }
 
         public string SortIndiaStateCodeByState()
         {
-            var listOb = JsonConvert.DeserializeObject<List<JSONCode>>(CsvToJSON());
+            var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
             var descListOb = listOb.OrderBy(x => x.StateName);
             return JsonConvert.SerializeObject(descListOb);
         }
 
         public string SortIndiaStateCensusByDensityPerSqKm()
         {
-            var listOb = JsonConvert.DeserializeObject<List<JSONCensus>>(CsvToJSON());
+            var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
             var descListOb = listOb.OrderBy(x => x.DensityPerSqKm);
             return JsonConvert.SerializeObject(descListOb);
         }
 
         public string SortIndiaStateCensusByAreaInSqKm()
         {
-            var listOb = JsonConvert.DeserializeObject<List<JSONCensus>>(CsvToJSON());
+            var listOb = JsonConvert.DeserializeObject<List<CensusDAO>>(CsvToJSON());
             var descListOb = listOb.OrderBy(x => x.AreaInSqKm);
             return JsonConvert.SerializeObject(descListOb);
         }
