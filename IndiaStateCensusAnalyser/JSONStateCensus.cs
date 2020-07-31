@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace IndiaStateCensusAnalyser
 {
@@ -26,7 +26,7 @@ namespace IndiaStateCensusAnalyser
 
             var listObjResult = new List<Dictionary<string, string>>();
 
-            for (int rows = 0; rows < lines.Length; rows++)
+            for (int rows = 1; rows < lines.Length; rows++)
             {
                 var objResult = new Dictionary<string, string>();
                 for (int columns = 0; columns < properties.Length; columns++)
@@ -38,37 +38,33 @@ namespace IndiaStateCensusAnalyser
             /*Console.WriteLine(json);
             string serializedAsString = JsonConvert.SerializeObject(json, Formatting.Indented);*/
         }
-        public enum Fields
-        {
-            STATE,AREA,DENSITY
-        }
-
-        public string SortIndiaStateCensusByState()
+        
+        public void SortIndiaSateCensusByState()
         {
             var listOb = JsonConvert.DeserializeObject<List<JSONCensus>>(CsvToJSON());
-            var ascListOb = listOb.OrderBy(x => x.State);
-            return JsonConvert.SerializeObject(ascListOb);
+            var descListOb = listOb.OrderBy(x => x.State);
+            Console.WriteLine(JsonConvert.SerializeObject(descListOb));
         }
 
-        public string SortIndiaStateCodeByState()
+        public void SortIndiaSateCodeByState()
         {
             var listOb = JsonConvert.DeserializeObject<List<JSONCode>>(CsvToJSON());
-            var ascListOb = listOb.OrderBy(x => x.StateName);
-            return JsonConvert.SerializeObject(ascListOb);
+            var descListOb = listOb.OrderBy(x => x.StateName);
+            Console.WriteLine(JsonConvert.SerializeObject(descListOb));
         }
 
-        public string SortIndiaStateCensusByDensityPerSqKm()
+        public void SortIndiaSateCensusByDensityPerSqKm()
         {
             var listOb = JsonConvert.DeserializeObject<List<JSONCensus>>(CsvToJSON());
-            var ascListOb = listOb.OrderBy(x => x.DensityPerSqKm);
-            return JsonConvert.SerializeObject(ascListOb);
+            var descListOb = listOb.OrderBy(x => x.DensityPerSqKm);
+            Console.WriteLine(JsonConvert.SerializeObject(descListOb));
         }
 
-        public string SortIndiaStateCensusByAreaInSqKm()
+        public void SortIndiaSateCensusByAreaInSqKm()
         {
             var listOb = JsonConvert.DeserializeObject<List<JSONCensus>>(CsvToJSON());
-            var ascListOb = listOb.OrderBy(x => x.AreaInSqKm);
-            return JsonConvert.SerializeObject(ascListOb);
+            var descListOb = listOb.OrderBy(x => x.AreaInSqKm);
+            Console.WriteLine(JsonConvert.SerializeObject(descListOb));
         }
     }
 }
