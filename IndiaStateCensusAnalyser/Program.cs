@@ -16,11 +16,15 @@ namespace IndiaStateCensusAnalyser
             Console.WriteLine("state census recors: " + stateCensusRecords);
             StateCensusAnalyser.GetData(STATE_CENSUS_FILE_PATH);
             Console.WriteLine();
-            new JSONStateCensus(STATE_CENSUS_FILE_PATH).SortIndiaSateCensusByState();
+            var data = new JSONStateCensus(STATE_CENSUS_FILE_PATH).SortIndiaStateCensusByState();
+            Console.WriteLine(data[0]);
             Console.WriteLine();
-            new JSONStateCensus(STATE_CENSUS_FILE_PATH).SortIndiaSateCensusByDensityPerSqKm();
+            new JSONStateCensus(STATE_CENSUS_FILE_PATH).SortIndiaStateCensusByDensityPerSqKm();
             Console.WriteLine();
-            new JSONStateCensus(STATE_CENSUS_FILE_PATH).SortIndiaSateCensusByAreaInSqKm();
+            new JSONStateCensus(STATE_CENSUS_FILE_PATH).SortIndiaStateCensusByAreaInSqKm();
+            Console.WriteLine();
+            new JSONStateCensus(STATE_CODE_FILE_PATH).SortIndiaStateCodeByState();
+
         }
     }
 }
