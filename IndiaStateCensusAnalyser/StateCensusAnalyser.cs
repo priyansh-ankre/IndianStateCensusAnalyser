@@ -21,7 +21,7 @@ namespace IndiaStateCensusAnalyser
             this.wrongFilePath = wrongFilePath;
         }
 
-        public void CheckForException()
+        public int GetStateCensusRecords()
         {
             if (wrongFilePath != null)
             {
@@ -40,16 +40,12 @@ namespace IndiaStateCensusAnalyser
 
             foreach (var elements in numOfRecords)
             {
-                if (elements.Split()!=elements.Split(delimiter))
+                if (elements.Split() != elements.Split(delimiter))
                 {
                     throw new IndianStateAnalyserException("this is a wrong file type", IndianStateAnalyserException.ExceptionType.WRONG_CSV_DELIMITER_EXCEPTION);
                 }
             }
-        }
 
-        public static int GetStateCensusRecords(string filepath)
-        {
-            string[] numOfRecords = File.ReadAllLines(filepath);
             return numOfRecords.Length - 1;
         }
 
