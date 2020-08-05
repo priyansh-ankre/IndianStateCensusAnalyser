@@ -1,4 +1,4 @@
-﻿namespace IndiaStateCensusAnalyser
+namespace IndiaStateCensusAnalyser
 {
     class CensusDAO
     {
