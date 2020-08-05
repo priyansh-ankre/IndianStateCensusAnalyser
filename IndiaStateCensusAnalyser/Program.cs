@@ -13,7 +13,7 @@ namespace IndiaStateCensusAnalyser
             ICSVHelper cSVHelper = new JSONStateCensus(STATE_CENSUS_FILE_PATH);
 
             int csvStateCensusRecords = CSVStateCensus.GetRecords(STATE_CENSUS_FILE_PATH);
-            int stateCensusRecords = StateCensusAnalyser.GetStateCensusRecords(STATE_CENSUS_FILE_PATH);
+            int stateCensusRecords =new StateCensusAnalyser(STATE_CENSUS_FILE_PATH).GetStateCensusRecords();
 
             Console.WriteLine("CSV state census records: " + csvStateCensusRecords);
             Console.WriteLine("state census recors: " + stateCensusRecords);
@@ -28,12 +28,15 @@ namespace IndiaStateCensusAnalyser
             Console.WriteLine();
 
             Console.WriteLine("State in ascending order :" + cSVHelper.SortIndiaStateCensusByState());
+            Console.WriteLine();
 
             StateCensusAnalyser.GetData(US_CENSUS_DATA_FILE_PATH);
             Console.WriteLine();
 
             Console.WriteLine("State census data from most population density state to least one :" + new JSONStateCensus(US_CENSUS_DATA_FILE_PATH).SortUSCensusDataByPopulousState());
             Console.WriteLine();
+
+            Console.WriteLine("State in ascending order :" + new JSONStateCensus(US_CENSUS_DATA_FILE_PATH).SortUSCensusDataByState());
         }
     }
 }
